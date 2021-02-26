@@ -19,6 +19,7 @@
         }
         else {
             // object creation
+            //console.log("Please enter name");
             mydata = { stuid: sid, name: nm, email: em, password: pw, csrfmiddlewaretoken: csr };
             output = ""
             $.ajax({
@@ -33,14 +34,15 @@
                         for (i = 1; i < x.length; i++) {
                             output += "<tr><td>" + x[i].id + "</td><td>" + x[i].name + "</td><td>" + x[i].email + "</td><td>" + x[i].password +
                                 "</td><td> <input type='button' class='btn btn-warning btn-sm btn-edit' value='Edit' data-sid="
-                                + x[i].id + "/> <input type='button' class='btn btn-danger btn-sm btn-del' value='Delete' data-sid="
-                                + x[i].id + "/>";
+                                + x[i].id + "> <input type='button' class='btn btn-danger btn-sm btn-del' value='Delete' data-sid="
+                                + x[i].id + ">";
                         }
 
                         $("#tbody").html(output);
                         $("#msg").text("Form Submitted Successfully")
                         $("#msg").show();
                         $("form")[0].reset();
+                        $(mythis).closest("tr").fadeOut();
                     }
 
                     if (data.status == 0) {
@@ -49,7 +51,6 @@
                         console.log("Unable to save Form")
                         $("form")[0].reset();
                     }
-
                 }
             })
         }
@@ -104,3 +105,5 @@
     });
 
 </script>
+
+<!-- 60643b64-fe7a-4794-9bc5-68ff26676bb9 -->
